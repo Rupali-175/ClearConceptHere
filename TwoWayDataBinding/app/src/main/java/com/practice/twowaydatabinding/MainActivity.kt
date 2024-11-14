@@ -1,5 +1,6 @@
 package com.practice.twowaydatabinding
 
+import android.app.Application
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -14,8 +15,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.Observer
 import com.practice.twowaydatabinding.databinding.ActivityMainBinding
+import com.practice.twowaydatabinding.security.StorageManager
 import com.practice.twowaydatabinding.ui.theme.TwoWayDataBindingTheme
 
 class MainActivity : AppCompatActivity() {
@@ -31,6 +34,18 @@ class MainActivity : AppCompatActivity() {
         loginViewModel.user.observe(this, Observer { user ->
             activityMainBinding.user = user
         })
+
+
+        activityMainBinding.btnSave.setOnClickListener {
+            StorageManager.saveCredentials(this, StorageManager.USERNAME_KEY, activityMainBinding.edtName.text.toString())
+            StorageManager.saveCredentials(this, StorageManager.PASSWORD_KEY, activityMainBinding.edtPassword.text.toString())
+        }
+        activityMainBinding.btnShow.setOnClickListener {
+            val name=StorageManager.getCredentials(this, StorageManager.USERNAME_KEY)
+            val pwd=StorageManager.getCredentials(this, StorageManager.PASSWORD_KEY)
+            println("Encryption $name")
+            println("Encryption $pwd")
+        }
 
     }
 }

@@ -2,4 +2,6 @@
     <string name="app_name">TwoWayDataBinding</string>
     <string name="remember_me">Remember Me</string>
     <string name="login">Login</string>
+    <string name="save">Save\n</string>
+    <string name="show">Show\n\n</string>
 </resources>

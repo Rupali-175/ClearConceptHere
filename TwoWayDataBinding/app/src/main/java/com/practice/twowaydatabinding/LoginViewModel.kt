@@ -5,6 +5,7 @@ import androidx.databinding.BindingAdapter
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.practice.twowaydatabinding.security.StorageManager
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -22,7 +23,6 @@ class LoginViewModel : ViewModel() {
             edtUserName.value.toString(),
             "Updated pwd", true, timeStamp.value!!
         )
-
     }
 }
 //  use either in util file or outside of viewmodel

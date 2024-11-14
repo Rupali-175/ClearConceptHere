@@ -61,4 +61,5 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     implementation(libs.androidx.constraintlayout)
+    implementation ("androidx.security:security-crypto:1.0.0")
 }
