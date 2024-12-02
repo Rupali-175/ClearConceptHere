@@ -1,5 +1,6 @@
 package com.practice.twowaydatabinding
 
+import android.content.Context
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.LiveData
@@ -24,7 +25,20 @@ class LoginViewModel : ViewModel() {
             "Updated pwd", true, timeStamp.value!!
         )
     }
+
+    fun saveUser(context: Context) {
+        StorageManager.saveCredentials(
+            context,
+            StorageManager.USERNAME_KEY,
+            edtUserName.value.toString()
+        )
+    }
+
+    fun getUser(context: Context) : String? {
+        return StorageManager.getCredentials(context, StorageManager.USERNAME_KEY)
+    }
 }
+
 //  use either in util file or outside of viewmodel
 @BindingAdapter("formattedDate")
 fun formatDate(txtDate: TextView, timeStamp: Long?) {
